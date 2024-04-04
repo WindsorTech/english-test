@@ -35,9 +35,12 @@ h2 {
 }
 
 .quizContainer {
-	padding-top: 20px;
 	text-align: center;
 	font-size: 24px;
+}
+
+.q-title {
+	margin-bottom: 15px;
 }
 
 .choiceList {
@@ -54,6 +57,7 @@ h2 {
 
 .answer-msg {
 	font-size:28px;
+	margin-bottom: 15px;
 }
 
 .btn-lg {

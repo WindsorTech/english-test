@@ -5,55 +5,46 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
-var secs = 10;
 
 // Array of objects with questions data
 var questions = [{
-    question: "1. What is the largest country in the world?",
-    choices: ["China", "Russia", "United States", "Canada"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/yqj1Nq2LDeWPu/giphy.gif' width=290 height=200>",
-    text: "Russia is the world's largest country, with a total area of 17.1 million square kilometers",
+    question: "1. Michelle ____ from France",
+    choices: ["are", "is", "am", "be"],
+    text: "Michelle <u><b>is</b></u> from France",
     correctAnswer: 1
 }, {
-    question: "2. What is the approximate population of India?",
-    choices: ["750 million", "900 million", "1 billion", "1.2 billion"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/qj9LH3O2Td1Kg/giphy.gif' width=290 height=200>",
-    text: "India's current population is approximately 1.2 billion people",
-    correctAnswer: 3
+    question: "2. What is ____ name?",
+    choices: ["you", "his", "him", "he"],
+    text: "What is <u><b>his</b></u> name?",
+    correctAnswer: 1
 }, {
     question: "3. What is the capital city of Australia?",
     choices: ["Melbourne", "Sydney", "Canberra", "Adelaide"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/luFnd5dLvB4pW/giphy.gif' width=290 height=200>",
     text: "Canberra is the capital of Australia",
     correctAnswer: 2
 }, {
     question: "4. In what continent is Chile located?",
     choices: ["Central America", "Asia", "South America", "Europe"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/VHuvKNvDvIszC/giphy.gif' width=290 height=200>",
     text: "Chile is located on the western coast of South America",
     correctAnswer: 2
 }, {
     question: "5. What is the currency of Brazil?",
     choices: ["Brazilian Real", "Brazilian Dollar", "Brazilian Peso", "Brazilian Crown"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/GR7S6M8eUQwKY/giphy.gif' width=290 height=200>",
     text: "Brazil's official currency is called Real",
     correctAnswer: 0
 }, {
     question: "6. Between what years did World War I take place?",
     choices: ["1904 - 1908", "1914 - 1918", "1929 - 1935", "1939 - 1945"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/hsTBcU33SmtmE/giphy.gif' width=290 height=200>",
     text: "World War I happened from 1914 to 1918",
     correctAnswer: 1
 }, {
     question: "7. What is the world's most popular sport?",
     choices: ["Basketball", "Football", "Baseball", "Soccer"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/l2JhGDtOnOyeqDM4w/giphy.gif' width=290 height=200>",
     text: "Soccer is the most popular sport in the world",
     correctAnswer: 3
 }, {
     question: "8. What is Earth's approximate age?",
     choices: ["2.3 billion years", "3.6 billion years", "4.5 billion years", "5.2 billion years"],
-    giphy: "<img class='gif-img' src='https://media.giphy.com/media/UOdoMz3baCENO/giphy.gif' width=290 height=200>",
     text: "Our planet Earth is approximately 4.5 billion years old",
     correctAnswer: 2
 }];
@@ -63,6 +54,7 @@ var questions = [{
     $(".nextButton").hide();
     $(".resultButton").hide();
     $(".playAgainButton").hide();
+    $(".q-title").hide();
 
     // On the click of the Start Button - start the game
     $(".start-button").click(function(){
@@ -71,10 +63,8 @@ var questions = [{
         $(".start-button").hide();
         $(".quizMessage").hide();
         $(".checkButton").show();
+        $(".q-title").show();
         $(".answer-container").hide();
-
-        // Start the 10s timer
-        timer();
 
         // Call the function to display first question
         displayCurrentQuestion();
@@ -100,35 +90,9 @@ var questions = [{
 
 //====================== Game Functions ================//  
 
-    // Timer Function
-    function timer() {
-
-         setInterval(function() {
-
-            // Countdown seconds
-            secs--;
-
-            // Display timer on screen
-            $('.timer-zone').text("Time Remaining: " +secs+" seconds");
-
-            // If the seconds reach zero, check the answer
-            if (secs == 0) {
-
-            checkAnswer();
-                
-            } 
-        }, 1000);
-
-    }
-
-
-//========================================================//
 
 // Function to display current question and choices
 function displayCurrentQuestion() {
-
-    // Timer text
-    $('.timer-zone').text("Time Remaining: 10 seconds");
 
     // Variables to access the object data to create questions and choices
     var question = questions[currentQuestion].question;
@@ -161,8 +125,6 @@ function displayCurrentQuestion() {
         value = $("input[type='radio']:checked").val();
 
         $(".answer-container").show();
-
-        secs = 0;
                 
                 // if the user answer is correct     
                 if (value == questions[currentQuestion].correctAnswer) {
@@ -171,14 +133,13 @@ function displayCurrentQuestion() {
                     correctAnswers++;
 
                     // Hide and show appropriate elements to display answer screen
-                    $(".timer-zone").hide();
                     $(".question").hide();
                     $(".choiceList").hide();
                     $(".quizMessage").hide();
+                    $(".q-title").hide();
 
                     $(".answer-msg").html("<font color='#00b300'>CORRECT ANSWER!</font>");
                     $(".answer-msg2").html(questions[currentQuestion].text);
-                    $(".answer-gif").html(questions[currentQuestion].giphy);
 
                     $(".checkButton").hide();
                     $(".nextButton").show();
@@ -189,14 +150,13 @@ function displayCurrentQuestion() {
                     wrongAnswers++;
 
                     // Hide and show appropriate elements to display answer screen
-                    $(".timer-zone").hide();
                     $(".question").hide();
                     $(".choiceList").hide();
                     $(".quizMessage").hide();
+                    $(".q-title").hide();
 
                     $(".answer-msg").html("<font color='#ff0000'>WRONG ANSWER!</font>");
                     $(".answer-msg2").html(questions[currentQuestion].text);
-                    $(".answer-gif").html(questions[currentQuestion].giphy);
 
                     $(".checkButton").hide();
                     $(".nextButton").show();
@@ -228,14 +188,8 @@ function displayCurrentQuestion() {
     // Function to move the game on to the next question
     function nextQuestion() {
 
-            // Timer text
-            $('.timer-zone').text("Time Remaining: 10 seconds");
-
-            // Set up seconds to restart timer
-            secs = 11;
-
             // Set up game environment - hide and show appropriate elements
-            $(".timer-zone").show();
+            $(".q-title").show();
             $(".question").show();
             $(".choiceList").show();
             $(".checkButton").show();
@@ -255,14 +209,11 @@ function displayCurrentQuestion() {
     // Function to display results at the end of game
     function finalResult() {
 
-        // Set secs to zero to shut down timer
-        secs = 0;
-
         // Hide and show appropriate elements on page
-        $(".timer-zone").hide();
         $(".start-button").hide();
         $(".quizMessage").hide();
         $(".question").hide();
+        $(".q-title").hide();
         $(".choiceList").hide();
         $(".checkButton").hide();
         $(".nextButton").hide();
@@ -307,22 +258,7 @@ function displayCurrentQuestion() {
     // Function to restart game
     function restartGame() {
 
-        // Reset game variables
-        currentQuestion = 0;
-        correctAnswers = 0;
-        wrongAnswers = 0;
-
-
-        // Hide and show appropriate elements on screen
-        $(".timer-zone").show();
-        $(".question").show();
-        $(".choiceList").show();
-
-        $(".answer-container").hide();
-        $(".playAgainButton").hide();
-
-        // Call the function to show first question
-        nextQuestion();
+         location.reload();
 }
 
 });
