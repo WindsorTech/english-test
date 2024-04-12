@@ -10,7 +10,7 @@ var quizOver = false;
 var questions = [{
     question: "1. Michelle ____ from France.",
     choices: ["are", "is", "am", "be"],
-    text: "Michelle <u><b>is</b></u> from France",
+    text: "Michelle <u><b>is</b></u> from France.",
     correctAnswer: 1
 }, {
     question: "2. What is ____ name?",
