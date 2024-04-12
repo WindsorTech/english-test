@@ -8,7 +8,7 @@ var quizOver = false;
 
 // Array of objects with questions data
 var questions = [{
-    question: "1. Michelle ____ from France",
+    question: "1. Michelle ____ from France.",
     choices: ["are", "is", "am", "be"],
     text: "Michelle <u><b>is</b></u> from France",
     correctAnswer: 1
