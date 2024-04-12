@@ -14,38 +14,48 @@ var questions = [{
     correctAnswer: 1
 }, {
     question: "2. What is ____ name?",
-    choices: ["you", "his", "him", "he"],
+    choices: ["he", "him", "his", "you"],
     text: "What is <u><b>his</b></u> name?",
-    correctAnswer: 1
-}, {
-    question: "3. What is the capital city of Australia?",
-    choices: ["Melbourne", "Sydney", "Canberra", "Adelaide"],
-    text: "Canberra is the capital of Australia",
     correctAnswer: 2
 }, {
-    question: "4. In what continent is Chile located?",
-    choices: ["Central America", "Asia", "South America", "Europe"],
-    text: "Chile is located on the western coast of South America",
-    correctAnswer: 2
-}, {
-    question: "5. What is the currency of Brazil?",
-    choices: ["Brazilian Real", "Brazilian Dollar", "Brazilian Peso", "Brazilian Crown"],
-    text: "Brazil's official currency is called Real",
-    correctAnswer: 0
-}, {
-    question: "6. Between what years did World War I take place?",
-    choices: ["1904 - 1908", "1914 - 1918", "1929 - 1935", "1939 - 1945"],
-    text: "World War I happened from 1914 to 1918",
+    question: "3. I ____ eighteen years old.",
+    choices: ["have", "am", "got", "do"],
+    text: "I <u><b>am</b></u> eighteen years old.",
     correctAnswer: 1
 }, {
-    question: "7. What is the world's most popular sport?",
-    choices: ["Basketball", "Football", "Baseball", "Soccer"],
-    text: "Soccer is the most popular sport in the world",
+    question: "4. My friend ____ in London.",
+    choices: ["living", "live", "livings", "lives"],
+    text: "My friend <u><b>lives</b></u> in London.",
     correctAnswer: 3
 }, {
-    question: "8. What is Earth's approximate age?",
-    choices: ["2.3 billion years", "3.6 billion years", "4.5 billion years", "5.2 billion years"],
-    text: "Our planet Earth is approximately 4.5 billion years old",
+    question: "5. Where ____?",
+    choices: ["works Tom", "does Tom work", "Tom does work", "Tom works"],
+    text: "Where <u><b>does Tom work</b></u>?",
+    correctAnswer: 1
+}, {
+    question: "6. I ____ coffee.",
+    choices: ["not like", "like don't", "no like", "don't like"],
+    text: "I <u><b>don't like</b></u> coffee.",
+    correctAnswer: 3
+}, {
+    question: "7. Tokyo is ____ city I’ve ever lived in.",
+    choices: ["the biggest", "the bigger", "the most big", "the more big"],
+    text: "Tokyo is <u><b>the biggest</b></u> city I’ve ever lived in.",
+    correctAnswer: 0
+}, {
+    question: "8. ____ did the Beatles record their first song?",
+    choices: ["What", "Who", "When", "Which"],
+    text: "<u><b>When</b></u> did the Beatles record their first song?",
+    correctAnswer: 1
+}, {
+    question: "9. It's my birthday ____ Friday.",
+    choices: ["in", "at", "by", "on"],
+    text: "It's my birthday <u><b>on</b></u> Friday.",
+    correctAnswer: 3
+}, {
+    question: "10. I ____ study English tomorrow.",
+    choices: ["did", "does", "will", "are"],
+    text: "I <u><b>will</b></u> study English tomorrow.",
     correctAnswer: 2
 }];
 
@@ -166,7 +176,7 @@ function displayCurrentQuestion() {
                 currentQuestion++;  
 
                 // If the game is at the last question, show the Result button
-                if (currentQuestion == 8) {
+                if (currentQuestion == 10) {
                     $(".nextButton").hide();
                     $(".resultButton").show();
                 }
@@ -229,19 +239,23 @@ function displayCurrentQuestion() {
         // Display results final advice, depending on user score
         if (correctAnswers <= 2 ) {
 
-            $(".answer-gif").text("You need to improve your world knowledge, think outside the box!");
+            $(".answer-gif").text("You need to study more!");
 
-        } else if (correctAnswers > 2 && correctAnswers <= 4) {
+        } else if (correctAnswers > 2 && correctAnswers <= 5) {
 
-            $(".answer-gif").text("Good job, but the world believes you can do better next time!");
+            $(".answer-gif").text("Not a bad job, but you can do better!");
 
-        } else if (correctAnswers > 4 && correctAnswers <= 6) {
+        } else if (correctAnswers > 5 && correctAnswers <= 7) {
 
-            $(".answer-gif").text("Awesome job, stay curious and you will conquer the world!");
+            $(".answer-gif").text("You know English, just pay attention to the details!");
 
-        } else if (correctAnswers > 6) {
+        } else if (correctAnswers > 7 && correctAnswers <= 9) {
 
-            $(".answer-gif").text("You are a world master! Have you thought about running for president?!");
+            $(".answer-gif").text("Great job, you are almost at the top. Keep practicing!");
+            
+        } else if (correctAnswers > 9) {
+
+            $(".answer-gif").text("You are awesome, all your answers were correct. Congratulations!");
             
         }
 
