@@ -46,7 +46,7 @@ var questions = [{
     question: "8. ____ did the Beatles record their first song?",
     choices: ["What", "Who", "When", "Which"],
     text: "<u><b>When</b></u> did the Beatles record their first song?",
-    correctAnswer: 1
+    correctAnswer: 2
 }, {
     question: "9. It's my birthday ____ Friday.",
     choices: ["in", "at", "by", "on"],
